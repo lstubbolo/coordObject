@@ -8,4 +8,7 @@ tempList.printSet()
 
 temp = -1
 print("_____________________")
+
+image
+
 tempList.printSet()
