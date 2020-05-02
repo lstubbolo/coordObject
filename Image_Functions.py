@@ -1,7 +1,7 @@
 import os
 import cv2
 from time import sleep
-
+from CoordList import coordList
 SCREEN_DIMS = {'width': 800, 'height': 480}
 
 
@@ -21,11 +21,9 @@ def getFullPath(fileName):
 
 #   CRASHES ON MAC DO NOT RUN
 #   attempts to display the image at the provided path
-def showImage(imgPath):
+def showImage(imgPath, cropObjs):
     print("print displaying image... Warning, this may crash all your shit...")
     imgPath = getFullPath(imgPath)
-
-
 
     if (not os.path.exists(imgPath)):
         print("No Source Image, Fool! Run takeSource!")
@@ -42,51 +40,18 @@ def showImage(imgPath):
             cv2.destroyAllWindows()
             cv2.waitKey(1)
 
-
-
         cv2.namedWindow(windowName, cv2.WINDOW_AUTOSIZE)
         cv2.startWindowThread()
 
         cv2.setMouseCallback(windowName, closeWin)
         #cv2.resizeWindow(windowName, SCREEN_DIMS['width'], SCREEN_DIMS['height'])
 
+        #   add rectangles to the window
+        for obj in cropObjs:
+            cv2.rectangle(image, obj.topL, obj.botR, (0, 255, 0), 3)
+
+
         cv2.imshow(windowName, image)
         cv2.waitKey(1)
 
-#   CRASHES ON MAC DO NOT RUN
-# calls the show image for every item in the list
-def displayCropped(cropList):
-    for img in cropList:
-        showImage(img)
 
-def displaySafe(imgPath):
-    def closeWin(event, x, y, flags, param):
-        if not(event == 0):
-            print('Event: ', event)
-            print(event)
-            print()
-
-        if not (flags == 0):
-            print("flags")
-            print(flags)
-            print()
-
-        if not (param == None):
-            print("param")
-            print(param)
-            print()
-
-        # cv2.destroyWindow(windowName)
-        #cv2.destroyWindow("Source Image")
-
-
-    imgPath = getFullPath(imgPath)
-
-    image = cv2.imread(imgPath)
-    windowName = "Source Image"
-
-    cv2.namedWindow(windowName, cv2.WINDOW_AUTOSIZE)
-    cv2.setMouseCallback(windowName, closeWin)
-
-    cv2.imshow(windowName, image)
-    cv2.waitKey(0)

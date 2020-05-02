@@ -1,6 +1,6 @@
 import json
 import os
-from coordObj import coordObj
+from CoordObj import *
 
 
 #   custom collection of coordObjects
