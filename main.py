@@ -5,16 +5,16 @@ from Image_Functions import *
 
 tempList = coordList()
 tempList.printSet()
-
-
-temp = -1
 print("_____________________")
 
-# tempList.printSet()
+# tempList.wipeList()
 
-cropped = {'crop1.jpg', 'crop2.jpg', 'crop3.jpg'}
+# tempList.addObject(coordObj('topSquare2x2', (100, 100), (300, 300)))
 
-for entry in tempList:
-    print(entry.topL, entry.botR)
+# addCrop(tempList, 'imgGrid.jpg')
 
-showImage('kittens.jpg', tempList)
+showImage(tempList, 'imgGrid.jpg')
+
+# cropSource(tempList, 'imgGrid.jpg')
+
+tempList.printSet()

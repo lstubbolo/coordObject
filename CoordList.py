@@ -117,7 +117,7 @@ class coordList():
 
     #   attempts to return first entry in the list via specified value (point)
     def getObjPoint(self, point):
-        for entry in self.myList:
+        for entry in self.myList[1:]:
             if entry.checkInside(point):
                 return entry
         else:
@@ -155,6 +155,10 @@ class coordList():
     def printSet(self):
         for entry in self.myList:
             entry.printCoord()
+
+    #   returns the number of objects in the set
+    def getSize(self):
+        return len(self.myList)
 
     #   These functions shadow the ones in the child class
     #   functions that modify entries trigger saveSet afterwords

@@ -39,8 +39,8 @@ class coordObj:
         x_vals.sort()
         y_vals.sort()
 
-        topLeft = (x_vals[0], y_vals[1])
-        botRight = (x_vals[1], y_vals[0])
+        topLeft = (x_vals[0], y_vals[0])
+        botRight = (x_vals[1], y_vals[1])
 
         return topLeft, botRight
 
@@ -142,7 +142,7 @@ class coordObj:
 
     #   prints the coord info to the console
     def printCoord(self):
-        outStr = self.name + "\t: " + str(self.topL) + "\t,\t" + str(self.botR)
+        outStr = self.name + "\t: " + "TopL: " + str(self.topL) + "\t,\t" + "BotR: " + str(self.botR)
         print(outStr)
 
     #   get the coordObject as a dictionary -> used for serialization to json
